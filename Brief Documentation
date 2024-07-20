@@ -1,0 +1,65 @@
+### Documentation: Room Allocation System
+
+#### Overview
+This script performs room allocation for groups based on their size, gender, and hostel capacities. It involves reading data from CSV files, processing the data to allocate rooms, and providing outputs indicating the allocation status.
+
+#### Code Explanation
+
+1. **Setup and CSV Creation**
+
+   - **Creating Directories and CSV Files**: The script first ensures that a `static` directory exists. If it does not, it creates the directory.
+   - **Defining Data**: It then defines data for two CSV files:
+     - `ginfo.csv`: Contains details about groups (Group ID, Members, Gender).
+     - `hinfo.csv`: Contains details about hostels (Hostel Name, Room Number, Capacity, Gender).
+   - **Saving Data**: These data are saved into CSV files (`static/ginfo.csv` and `static/hinfo.csv`).
+
+2. **Reading Data from CSV Files**
+
+   - **Groups Data (`ginfo.csv`)**:
+     - Reads the CSV using `csv.DictReader`.
+     - Processes each record to handle both simple and complex gender specifications (e.g., "5 Boys & 3 Girls").
+     - Converts the data into tuples and stores them in `rows_group`.
+   - **Hostels Data (`hinfo.csv`)**:
+     - Reads the CSV using `csv.DictReader`.
+     - Converts each record into tuples and stores them in `rows_hostel`.
+
+3. **Allocation Function**
+
+   - **`allocate` Function**:
+     - Iterates over hostels and groups.
+     - Allocates a room if the room’s capacity matches the group’s size and the gender is appropriate.
+     - Updates the `allocated` list with allocated rooms.
+     - Handles cases where rooms are reserved for different genders or already allocated.
+
+4. **Results Calculation and Output**
+
+   - **Allocations**:
+     - Calls the `allocate` function to process the allocations.
+   - **Non-Allocations**:
+     - Identifies which groups could not be allocated a room and stores them in `not_allocated`.
+   - **Printing Results**:
+     - Displays the allocated rooms, the total number of rooms, and rooms that were not allocated.
+
+#### Logic and Usage
+
+- **Logic**:
+  - The script reads group and hostel information from CSV files.
+  - It then processes this data to allocate rooms based on the group size and gender.
+  - The allocation is done while ensuring no room exceeds its capacity and gender-specific rules are respected.
+
+- **Usage**:
+  - **Preparation**: Ensure that the `static` directory exists and contains the required CSV files.
+  - **Execution**: Run the script to perform the allocation. It will read the CSV files, process the data, and output the allocation status to the console.
+  - **Outputs**:
+    - **Allocated Rooms**: Shows which rooms were allocated to which groups.
+    - **Non-Allocated Groups**: Lists groups that couldn’t be accommodated due to capacity or gender mismatches.
+
+#### Example
+
+Given `ginfo.csv` and `hinfo.csv`, the script performs the following steps:
+1. Reads the group data, handling both simple and complex gender cases.
+2. Reads the hostel data, noting each room’s capacity and gender.
+3. Allocates rooms to groups based on the specified criteria.
+4. Outputs the results, including which rooms were successfully allocated and which groups could not be accommodated.
+
+This script can be adapted for different datasets or used as a basis for more complex allocation systems. Adjustments might be necessary for handling different data structures or requirements.
