@@ -1,0 +1,64 @@
+### Instructions to Run the Room Allocation Application
+
+#### Prerequisites
+
+1. **Python Environment**: Ensure you have Python installed. You can download it from the [official Python website](https://www.python.org/downloads/).
+
+2. **Required Libraries**: Install the required libraries using pip:
+  
+   pip install pandas
+
+#### Setup and Execution
+
+1. **Prepare the Script**
+
+   Copy the entire script provided into a Python file, e.g., `room_allocation.py`.
+
+2. **Run the Script**
+
+   Open a terminal or command prompt, navigate to the directory where `room_allocation.py` is saved, and execute the script:
+
+   python room_allocation.py
+
+3. **Verify Output**
+
+   The script will:
+   - Create a `static` directory if it doesn't exist.
+   - Generate `ginfo.csv` and `hinfo.csv` files in the `static` directory with the sample data.
+   - Read these CSV files and process the data to allocate rooms based on group size and gender.
+   - Print out the results, including:
+     - **Allocated Rooms**: Details of rooms allocated to groups.
+     - **Total Rooms**: The total number of rooms.
+     - **Rooms Not Allocated**: Details of rooms that couldn't be allocated.
+
+#### Detailed Steps
+
+1. **File Preparation**
+
+   The script initializes and saves CSV files with mock data for groups and hostels. This data includes:
+   - **Groups**: Information about group IDs, number of members, and gender details.
+   - **Hostels**: Information about hostel names, room numbers, capacities, and gender specifications.
+
+2. **Data Reading**
+
+   - **Groups Data**: The script reads `ginfo.csv` and processes the gender field to handle both simple and compound gender specifications.
+   - **Hostels Data**: The script reads `hinfo.csv` to get details about each hostel room.
+
+3. **Allocation Logic**
+
+   - **Allocation Function**: This function matches groups with hostel rooms based on capacity and gender. It ensures no room is double-allocated and handles gender-specific reservations.
+   - **Results**: After allocation, it prints which rooms have been allocated, the total number of rooms, and any rooms that could not be allocated.
+
+4. **Output**
+
+   - **Allocated Rooms**: Displays rooms successfully allocated to groups.
+   - **Total Rooms**: Shows the total number of rooms available.
+   - **Rooms Not Allocated**: Lists rooms that couldn’t be assigned to any group due to mismatches in capacity or gender.
+
+#### Troubleshooting
+
+- **File Not Found Error**: Ensure that the script is executed in the directory where the `static` folder is created.
+- **Dependency Issues**: Make sure `pandas` and other dependencies are properly installed. Reinstall them if necessary.
+- **Data Accuracy**: Verify that the data in `ginfo.csv` and `hinfo.csv` is correctly formatted and corresponds to the expected structure.
+
+Feel free to modify the script or data according to your needs. If you encounter any specific issues or need further customization, additional debugging may be required.
